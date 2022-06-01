@@ -29,5 +29,5 @@ class TagDetailView(generics.ListAPIView):
 
     def get_queryset(self):
         tag_slug = self.kwargs['tag_slug'].lower()
-        tag = Post.objects.get(slug=tag_slug)
+        tag = Tag.objects.get(slug=tag_slug)
         return Post.objects.filter(tags=tag)
