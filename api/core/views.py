@@ -1,17 +1,12 @@
+from rest_framework import viewsets
+from .serializers import PostSerializer
+from .models import Post
+from rest_framework import permissions
+from rest_framework.response import Response
 
 
-
-
-
-
-
-
-
-
-a, *_ = [2, 5, 7, 8, 9]
-print('?= ', a)
-print('?= ', _)
-
-
-s, *_, (*_, n) = ['hi', 'i', 'like', 'python']
-print('?= ', n)
+class PostViewSet(viewsets.ModelViewSet):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
+    lookup_field = 'slug'
+    permission_classes = [permissions.AllowAny]
